@@ -1,7 +1,6 @@
 from Chicken_Disease_Classification import logger
 from Chicken_Disease_Classification.pipeline.pipeline import DataIngestionTrainingPipeline
 
-<<<<<<< HEAD
 
 STAGE_NAME = "Data Ingestion Stage"
 try:
@@ -12,6 +11,6 @@ try:
 except Exception as e:
     logger.exception(e)
     raise e
-=======
+
 logger.info("Welconme to my custom log")
->>>>>>> parent of 2987489 (Logger)
+
