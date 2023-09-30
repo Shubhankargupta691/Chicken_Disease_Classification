@@ -5,14 +5,9 @@ import tensorflow as tf
 import time
 from Chicken_Disease_Classification.entity.config_entity import PrepareCallbacksConfig
 
-
-
-
 class PrepareCallback:
     def __init__(self, config: PrepareCallbacksConfig):
         self.config = config
-
-
 
     @property
     def _create_tb_callbacks(self):
@@ -23,15 +18,12 @@ class PrepareCallback:
         )
         return tf.keras.callbacks.TensorBoard(log_dir=tb_running_log_dir)
 
-
     @property
     def _create_ckpt_callbacks(self):
-       return tf.keras.callbacks.ModelCheckpoint(
-        filepath=str(self.config.checkpoint_model_filepath),  # Convert 'filepath' to a string
-        save_best_only=True
+        return tf.keras.callbacks.ModelCheckpoint(
+            filepath=str(self.config.checkpoint_model_filepath),  # Convert 'filepath' to a string
+            save_best_only=True
         )
-
-
 
     def get_tb_ckpt_callbacks(self):
         return [

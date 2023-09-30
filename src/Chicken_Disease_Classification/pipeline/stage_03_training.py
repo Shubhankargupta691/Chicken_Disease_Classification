@@ -18,6 +18,7 @@ class ModelTrainingPipeline:
         prepare_callbacks = PrepareCallback(config=prepare_callbacks_config)
         callback_list = prepare_callbacks.get_tb_ckpt_callbacks()
 
+
         training_config = config.get_training_config()
         training = Training(config=training_config)
         training.get_base_model()
@@ -29,14 +30,14 @@ class ModelTrainingPipeline:
 
 
 
-# if __name__ == '__main__':
-#     try:
-#         logger.info(f"*******************")
-#         logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-#         obj = ModelTrainingPipeline()
-#         obj.main()
-#         logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
-#     except Exception as e:
-#         logger.exception(e)
-#         raise e
+if __name__ == '__main__':
+    try:
+        logger.info(f"*******************")
+        logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+        obj = ModelTrainingPipeline()
+        obj.main()
+        logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+    except Exception as e:
+        logger.exception(e)
+        raise e
         
