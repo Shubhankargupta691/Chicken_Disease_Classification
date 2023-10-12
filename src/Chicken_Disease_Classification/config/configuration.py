@@ -98,6 +98,7 @@ class ConfigurationManager:
         eval_config = EvaluationConfig(
             path_of_model=Path("artifacts/training/model.h5"),
             training_data=Path("artifacts/data_ingestion/Chicken-fecal-images"),
+            mlflow_uri="https://dagshub.com/Shubhankargupta691/Chicken_Disease_Classification.mlflow",
             all_params=self.params,
             params_image_size=self.params.IMAGE_SIZE,
             params_batch_size=self.params.BATCH_SIZE

@@ -41,6 +41,77 @@ stages:
     outs:
     - path: artifacts/prepare_base_model
       hash: md5
-      md5: 9ddca90100a60c054a899cdde540bb86.dir
+      md5: f7f41a13dc4b78e3fd828f8678af1834.dir
       size: 118059248
       nfiles: 2
+  training:
+    cmd: python src/Chicken_Disease_Classification/pipeline/stage_03_training.py
+    deps:
+    - path: artifacts/data_ingestion/Chicken-fecal-images
+      hash: md5
+      md5: 9e1f8dd2eae3c29e9d635df89d438ae4.dir
+      size: 12207807
+      nfiles: 390
+    - path: artifacts/prepare_base_model
+      hash: md5
+      md5: f7f41a13dc4b78e3fd828f8678af1834.dir
+      size: 118059248
+      nfiles: 2
+    - path: config/config.yaml
+      hash: md5
+      md5: d0d8e7190c60b62621d729a36f5c4c2d
+      size: 810
+    - path: src/Chicken_Disease_Classification/components/prepare_callbacks.py
+      hash: md5
+      md5: 1a372f17731e354c5273edcc4875c5e8
+      size: 1051
+    - path: src/Chicken_Disease_Classification/pipeline/stage_03_training.py
+      hash: md5
+      md5: 34829e5db3ea3ad6ef6d74b4c2a076ac
+      size: 974
+    params:
+      params.yaml:
+        AUGMENTATION: true
+        BATCH_SIZE: 16
+        EPOCHS: 6
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+    outs:
+    - path: artifacts/training/model.h5
+      hash: md5
+      md5: b8cd08f9e93e951ae9016b52286dec2c
+      size: 59340720
+  evaluation:
+    cmd: python src/Chicken_Disease_Classification/pipeline/stage_04_evaluation.py
+    deps:
+    - path: artifacts/data_ingestion/Chicken-fecal-images
+      hash: md5
+      md5: 9e1f8dd2eae3c29e9d635df89d438ae4.dir
+      size: 12207807
+      nfiles: 390
+    - path: artifacts/training/model.h5
+      hash: md5
+      md5: b8cd08f9e93e951ae9016b52286dec2c
+      size: 59340720
+    - path: config/config.yaml
+      hash: md5
+      md5: d0d8e7190c60b62621d729a36f5c4c2d
+      size: 810
+    - path: src/Chicken_Disease_Classification/pipeline/stage_04_evaluation.py
+      hash: md5
+      md5: e4437a61300beb1b83e5f2f5c720cae9
+      size: 938
+    params:
+      params.yaml:
+        BATCH_SIZE: 16
+        IMAGE_SIZE:
+        - 224
+        - 224
+        - 3
+    outs:
+    - path: scores.json
+      hash: md5
+      md5: 5406a533ec241afc74425f2d0b7302d9
+      size: 72

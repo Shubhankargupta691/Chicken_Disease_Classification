@@ -14,5 +14,6 @@ types-PyYAML
 scipy
 Flask
 Flask-Cors
+mlflow
 
 -e .

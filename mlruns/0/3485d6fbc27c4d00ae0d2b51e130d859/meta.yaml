@@ -1,0 +1,15 @@
+artifact_uri: file:///d:/Chicken_Disease_Classification/mlruns/0/3485d6fbc27c4d00ae0d2b51e130d859/artifacts
+end_time: 1697144523277
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3485d6fbc27c4d00ae0d2b51e130d859
+run_name: welcoming-cub-161
+run_uuid: 3485d6fbc27c4d00ae0d2b51e130d859
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1697144523230
+status: 4
+tags: []
+user_id: shubh
