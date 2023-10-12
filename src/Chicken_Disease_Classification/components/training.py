@@ -1,16 +1,23 @@
 import tensorflow as tf
+import os
+import urllib.request as request
+from zipfile import ZipFile
+import tensorflow as tf
+import time
 from pathlib import Path
 from Chicken_Disease_Classification.entity.config_entity import TrainingConfig
+
 
 class Training:
     def __init__(self, config: TrainingConfig):
         self.config = config
+
     
     def get_base_model(self):
         self.model = tf.keras.models.load_model(
             self.config.updated_base_model_path
         )
-    
+
     def train_valid_generator(self):
 
         datagenerator_kwargs = dict(
@@ -55,12 +62,15 @@ class Training:
             **dataflow_kwargs
         )
 
+    
     @staticmethod
     def save_model(path: Path, model: tf.keras.Model):
         model.save(path)
 
 
-    def train(self, callback_list: list):
+
+    
+    def train(self):
         self.steps_per_epoch = self.train_generator.samples // self.train_generator.batch_size
         self.validation_steps = self.valid_generator.samples // self.valid_generator.batch_size
 
@@ -69,8 +79,7 @@ class Training:
             epochs=self.config.params_epochs,
             steps_per_epoch=self.steps_per_epoch,
             validation_steps=self.validation_steps,
-            validation_data=self.valid_generator,
-            callbacks=callback_list
+            validation_data=self.valid_generator
         )
 
         self.save_model(
