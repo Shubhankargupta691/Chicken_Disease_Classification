@@ -1,5 +1,7 @@
 # Chicken Disease Classification
 
+<img src="https://dagshub.com/repo-avatars/25294" alt="chicken_disease"/>
+
 ## WorkFlow
 
 1 Update config.yaml
