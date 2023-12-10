@@ -59,3 +59,5 @@ dvc repro
 ```bash
 dvc init
 ```
+
+### Deploy the Project
