@@ -1,5 +1,0 @@
-[core]
-    autostage = true
-    remote = my-github-remote
-['remote "my-github-remote"']
-    url = https://github.com/Shubhankargupta691/Chicken_Disease_Classification.git
