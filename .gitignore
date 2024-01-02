@@ -10,6 +10,7 @@ __pycache__/
 .vscode/
 #Artifacts
 artifacts/*
+Data_Set/*
 
 # Distribution / packaging
 .Python
