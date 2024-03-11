@@ -38,7 +38,7 @@ stages:
       - BATCH_SIZE
       - AUGMENTATION
     outs:
-      - artifacts/training/model.h5
+      - artifacts/training/model.keras
 
 
   
@@ -49,7 +49,7 @@ stages:
       - src/Chicken_Disease_Classification/pipeline/stage_04_evaluation.py
       - config/config.yaml
       - artifacts/data_ingestion/Chicken-fecal-images
-      - artifacts/training/model.h5
+      - artifacts/training/model.keras
     params:
       - IMAGE_SIZE
       - BATCH_SIZE

@@ -15,5 +15,5 @@ scipy
 Flask
 Flask-Cors
 mlflow
-
+kreas
 -e .

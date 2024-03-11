@@ -79,7 +79,7 @@ stages:
         - 224
         - 3
     outs:
-    - path: artifacts/training/model.h5
+    - path: artifacts/training/model.keras
       hash: md5
       md5: bbe3a7e4d86ec609cdb43f8c06dbdef8
       size: 59340720
@@ -91,7 +91,7 @@ stages:
       md5: 9e1f8dd2eae3c29e9d635df89d438ae4.dir
       size: 12207807
       nfiles: 390
-    - path: artifacts/training/model.h5
+    - path: artifacts/training/model.keras
       hash: md5
       md5: bbe3a7e4d86ec609cdb43f8c06dbdef8
       size: 59340720

@@ -1,0 +1,15 @@
+artifact_uri: file:///d:/Project/Chicken_Disease_Classification/mlruns/0/6bfb11b18f154bd682ccad81144f7c99/artifacts
+end_time: 1710180797385
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6bfb11b18f154bd682ccad81144f7c99
+run_name: gregarious-mule-950
+run_uuid: 6bfb11b18f154bd682ccad81144f7c99
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1710180771266
+status: 3
+tags: []
+user_id: shubh
