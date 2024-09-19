@@ -16,4 +16,5 @@ Flask
 Flask-Cors
 mlflow
 keras
+dvc
 -e .

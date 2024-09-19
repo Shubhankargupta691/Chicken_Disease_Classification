@@ -4,7 +4,7 @@ from flask_cors import CORS, cross_origin
 from Chicken_Disease_Classification.utils.common import decodeImage
 from Chicken_Disease_Classification.pipeline.predict import PredictionPipeline
 
-
+os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
 os.putenv('LANG', 'en_US.UTF-8')
 os.putenv('LC_ALL', 'en_US.UTF-8')
 
@@ -45,4 +45,4 @@ if __name__ == "__main__":
     clApp = ClientApp()
     # app.run(host='0.0.0.0', port=8080) #local host
     # app.run(host='0.0.0.0', port=8080) #for AWS
-    app.run(host='0.0.0.0', port=80) #for AZURE
+    app.run(host='0.0.0.0', port=80, debug=True) #for AZURE
