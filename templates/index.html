@@ -7,133 +7,13 @@
   <title>cnncls</title>
   <link rel="shortcut icon" href="" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-  <link href="style.css" rel="stylesheet" />
-  <style>
-    body {
-      background: #f4f7f6;
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-    }
-    .header {
-      text-align: center;
-      padding: 20px;
-      background-color: #ffffff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      position: sticky;
-      top: 0;
-      width: 100%;
-      z-index: 10;
-    }
-    .main {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      padding: 20px;
-    }
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Center horizontally */
-    }
-    .img-box {
-      border-radius: 12px;
-      border: 1px solid #ddd;
-      padding: 5px;
-      text-align: center;
-      width: 500px;
-      height: 400px;
-      background: white;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-      position: relative;
-      overflow: hidden;
-    }
-    .img-box img {
-      width: 100%;
-      height: auto;
-      max-height: 100%;
-      object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-    .img-box:hover {
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-    }
-    .button-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 20px;
-    }
-    .btn {
-      border-radius: 50px;
-      padding: 12px 24px;
-      font-size: 16px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
-    .btn-primary {
-      background-color: #007bff;
-      border: none;
-      color: white;
-      margin-right: 10px;
-    }
-    .btn-primary:hover {
-      background-color: #0056b3;
-      transform: scale(1.05);
-    }
-    .btn-success {
-      background-color: #28a745;
-      border: none;
-      color: white;
-      margin-left: 10px;
-    }
-    .btn-success:hover {
-      background-color: #218838;
-      transform: scale(1.05);
-    }
-    #loading {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .loader {
-      border: 16px solid #f3f3f3;
-      border-radius: 50%;
-      border-top: 16px solid #007bff;
-      width: 120px;
-      height: 120px;
-      animation: spin 2s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .json-display {
-      display: none;
-      text-align: left;
-      white-space: pre-wrap;
-      background-color: #ffffff;
-      border: 1px solid #ddd;
-      padding: 10px;
-      margin-top: 20px;
-      max-height: 400px;
-      overflow-y: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      font-family: 'Courier New', Courier, monospace;
-      width: 500px;
-    }
-  </style>
+  
+  <!-- style.css -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  
 </head>
 <body>
+
   <div class="header">
     <h3 class="text-center">Image Classification</h3>
   </div>
@@ -152,7 +32,9 @@
         <input name="upload" type="file" id="fileinput" style="position: absolute; top: -500px" />
       </form>
       <div id="json-output" class="json-display">
+
         <!-- JSON output will be displayed here -->
+
       </div>
     </section>
     <div id="loading">
@@ -163,109 +45,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-  <script>
-    function sendRequest(base64Data) {
-      var url = $("#url").val();
-      $("#loading").show();
-      $.ajax({
-        url: url,
-        type: "post",
-        cache: false,
-        async: true,
-        crossDomain: true,
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        data: JSON.stringify({ image: base64Data }),
-        success: function (res) {
-          $("#json-output").hide(); // Hide the output box initially
-          $("#json-output").html(""); // Clear previous output
-  
-          var textOutput = '';
-  
-          try {
-            if (Array.isArray(res)) {
-              // Handle array response
-              res.forEach(function(item) {
-                if (typeof item === 'object') {
-                  for (var key in item) {
-                    if (item.hasOwnProperty(key)) {
-                      textOutput += "<strong>Chicken has a disease called:</strong> " + item[key] + '<br>';
-                    }
-                  }
-                } else {
-                  textOutput += item + '<br>';
-                }
-              });
-            } else if (typeof res === 'object') {
-              // Handle object response
-              for (var key in res) {
-                if (res.hasOwnProperty(key)) {
-                  textOutput += "<strong>Chicken has a disease called:</strong> " + res[key] + '<br>';
-                }
-              }
-            } else {
-              textOutput = 'Unexpected response format';
-            }
-          } catch (e) {
-            console.error('Error processing result', e);
-            textOutput = 'Error processing result';
-          }
-  
-          // Add formatted text to the output box
-          $("#json-output").append("<div>" + textOutput.trim() + "</div>");
-          $("#json-output").show(); // Show the output box
-          $("#loading").hide();
-        },
-        error: function (xhr, status, error) {
-          $("#json-output").html("<p>Error: " + error + "</p>");
-          $("#json-output").show(); // Show the output box on error
-          $("#loading").hide();
-        }
-      });
-    }
-  
-    $(document).ready(function () {
-      $("#loading").hide();
-  
-      $("#send").click(function (evt) {
-        sendRequest(base_data);
-      });
-  
-      $("#uload").click(function (evt) {
-        $("#fileinput").focus().trigger("click");
-      });
-  
-      $("#fileinput").change(function () {
-        if (this.files && this.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            var url = e.target.result;
-            var img = new Image();
-            img.crossOrigin = "Anonymous";
-            img.onload = function () {
-              var canvas = document.createElement("CANVAS");
-              var ctx = canvas.getContext("2d");
-              canvas.height = this.height;
-              canvas.width = this.width;
-              ctx.drawImage(this, 0, 0);
-              base_data = canvas
-                .toDataURL("image/jpeg", 1.0)
-                .replace(/^data:image.+;base64,/, "");
-              canvas = null;
-            };
-            img.src = url;
-            $("#photo").attr("src", url);
-            $("#photo").show();
-          };
-          reader.readAsDataURL(this.files[0]);
-        }
-      });
-    });
-  </script>
-  
-  
-  
+  <!-- script.js -->
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

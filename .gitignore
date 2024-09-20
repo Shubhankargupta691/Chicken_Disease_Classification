@@ -12,6 +12,7 @@ __pycache__/
 artifacts/*
 Data_Set/*
 chick_venv/*
+inputImage.jpg
 
 # Distribution / packaging
 .Python
