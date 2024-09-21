@@ -24,6 +24,13 @@
 
 ## How to run the project
 
+### STEP:
+###    Clone the repository
+
+```bash
+https://github.com/Shubhankargupta691/Chicken_Disease_Classification.git
+```
+
 ### STEP 01- Create a [conda](https://www.anaconda.com/download/) environment in the Project Folder
 
 ```bash
@@ -62,4 +69,31 @@ dvc repro
 dvc init
 ```
 
-### Deploy the Project
+# AZURE CICD Deployment with Github Actions
+
+## Run these docker command  from terminal:
+
+If you're using Windows and have to download and install Docker Desktop and run it in background.
+
+#### STEP 01: Build the Docker image 
+
+```bash
+docker build --no-cache -t imageclassificationapp.azurecr.io/classification:latest .
+```
+#### STEP 02: Login to an Azure Container Registry (ACR) using Docker
+```bash
+docker login imageclassificationapp.azurecr.io
+```
+#### STEP 03: Push the Docker Image to Azure Container Registry (ACR)
+
+```bash
+docker push imageclassificationapp.azurecr.io/classification:latest
+```
+
+
+## Deployment Steps:
+
+1. Build the Docker image of the Source Code
+2. Push the Docker image to Container Registry
+3. Launch the Web App Server in Azure
+4. Pull the Docker image from the container registry to Web App server and run
