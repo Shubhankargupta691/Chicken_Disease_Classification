@@ -47,7 +47,13 @@ conda activate chicken_venv
 pip install -r requirements.txt
 ```
 
-### STEP 03- run app.py
+### STEP 03- run main.py
+
+```bash
+python main.py
+```
+
+### STEP 04- run app.py
 
 ```bash
 python app.py
@@ -69,11 +75,13 @@ dvc repro
 dvc init
 ```
 
+
+
 # AZURE CICD Deployment with Github Actions
 
 ## Run these docker command  from terminal:
 
-If you're using Windows and have to download and install Docker Desktop and run it in background.
+NOTE:  If you're using Windows and have to download and install Docker Desktop and run it in background.
 
 #### STEP 01: Build the Docker image 
 
@@ -106,3 +114,9 @@ AZUREAPPSERVICE_PUBLISHPROFILE
 2. Push the Docker image to Container Registry
 3. Launch the Web App Server in Azure
 4. Pull the Docker image from the container registry to Web App server and run
+
+## Docker Image:
+
+```bash
+docker pull shubhankargupta/classification:latest
+```
