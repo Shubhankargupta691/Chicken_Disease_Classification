@@ -90,6 +90,15 @@ docker login imageclassificationapp.azurecr.io
 docker push imageclassificationapp.azurecr.io/classification:latest
 ```
 
+# Setup github secrets:
+
+```bash
+AZUREAPPSERVICE_CONTAINERPASSWORD
+
+AZUREAPPSERVICE_CONTAINERUSERNAME
+
+AZUREAPPSERVICE_PUBLISHPROFILE
+```
 
 ## Deployment Steps:
 
