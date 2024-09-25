@@ -2,6 +2,21 @@
 
 <img src="https://dagshub.com/repo-avatars/25294" alt="chicken_disease"/>
 
+
+## Problem Statement
+
+To detect diseases in chickens at an early stage using deep learning techniques, preventing mortality in chickens, farmers loss due to mortality among chickens and ultimately keeping us healthy too. The aim of this project is to develop a very intelligent system for the early identification of various diseases in chickens. VGG16 from Keras Applications was implemented for the categorical classification of "Coccidiosis" and "Healthy.”
+
+## Test Results
+
+<p >
+    <img src="templates/images/healthy.png" alt="Healthy Chicken" width="800" />
+    <img src="templates/images/diseased.png" alt="Diseased Chicken" width="800"/>
+</p>
+
+
+
+
 ## WorkFlow
 
 1 Update config.yaml
@@ -72,8 +87,12 @@ dvc repro
 
 #### STEP 03- [Directed Acyclic Graph (DAG)](https://dvc.org/doc/command-reference/dag)
 ```bash
-dvc init
+dvc dag
 ```
+
+### Relationship between the pipelines:
+
+<img src="templates\images\pipelines.png" alt="Diseased Chicken" width="800"/>
 
 
 
