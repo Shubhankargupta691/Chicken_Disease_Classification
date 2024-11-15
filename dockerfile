@@ -1,4 +1,4 @@
-FROM python:3.11.4-slim-buster
+FROM python:3.14-rc-slim
 
 # Install dependencies for adding the Microsoft repository
 RUN apt-get update -y && \
