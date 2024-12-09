@@ -17,6 +17,4 @@ Flask-Cors
 mlflow
 keras
 dvc
-aiohttp>=3.10.11
-tornado>=6.4.2   
 -e .
