@@ -1,4 +1,4 @@
-FROM python:3.14-rc-slim
+FROM python:3.10-slim
 
 # Install dependencies for adding the Microsoft repository
 RUN apt-get update -y && \
@@ -17,7 +17,8 @@ WORKDIR /app
 COPY . /app
 
 # Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 # Set the command to run your Python app
 CMD ["python3", "app.py"]
