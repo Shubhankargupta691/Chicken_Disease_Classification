@@ -8,8 +8,7 @@
 To detect diseases in chickens at an early stage using deep learning techniques, preventing mortality in chickens, farmers loss due to mortality among chickens and ultimately keeping us healthy too. The aim of this project is to develop a very intelligent system for the early identification of various diseases in chickens. VGG16 from Keras Applications was implemented for the categorical classification of "Coccidiosis" and "Healthy.”
 
 ## Test Results
-
-[Watch the demo video](./asset/chickenvideo.webm)
+<iframe width="560" height="315" src="./asset/chickenvideo.webm" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
  
 <p >
     <img src="templates/images/healthy.png" alt="Healthy Chicken" width="800" />
