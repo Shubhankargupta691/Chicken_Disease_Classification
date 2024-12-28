@@ -9,6 +9,8 @@ To detect diseases in chickens at an early stage using deep learning techniques,
 
 ## Test Results
 
+[Watch the demo video](./static/video/chickenvideo.mp4)
+ 
 <p >
     <img src="templates/images/healthy.png" alt="Healthy Chicken" width="800" />
     <img src="templates/images/diseased.png" alt="Diseased Chicken" width="800"/>
