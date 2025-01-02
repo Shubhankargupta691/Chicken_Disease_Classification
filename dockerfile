@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.14.0a3-slim
 
 # Install dependencies for adding the Microsoft repository
 RUN apt-get update -y && \
